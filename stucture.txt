@@ -1,0 +1,21 @@
+app/
+   components/
+        header.component
+        footer.component
+    pages/
+        home.component
+        actions.component
+        actions-info.component
+        product-category.component
+            rolls.component
+            sets.component
+            drinks.component
+            sauces.component
+        delivery.component
+        about.component
+        discounts.component
+    admin.component
+        admin-actions.component
+        admin-category.component
+        admin-tovary.component
+        admin-orders.component

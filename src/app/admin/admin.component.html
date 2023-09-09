@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="categories">
+        <div class="panel">
+        <button type="button" class="item" [routerLink]="[ 'admin-actions']">Акції</button>
+        <button type="button" class="item" [routerLink]="[ 'admin-category']">Категорії</button>
+        <button type="button" class="item">Товари</button>
+        <button type="button" class="item">Замовлення</button>
+        </div>
+        <button type="button" class="exit" [routerLink]="[ '/']">ВИХІД</button>
+    </div>
+    <div class="adding">
+        <router-outlet></router-outlet>
+        
+    </div>
+</div>
+
+

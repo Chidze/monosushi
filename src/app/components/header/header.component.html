@@ -1,0 +1,72 @@
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="logo">
+        <img class="logo-img" src="../../../assets/logo.svg" alt="" [routerLink]="[ '/']">
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active"  [routerLink]="[ '/actions']">
+                    <img class="nav-img" src="../../../assets/nav-img-gift.svg" alt="">Акції</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" [routerLink]="[ 'product-category/rolls']">
+                    <img class="nav-img" src="../../../assets/nav-img-rolls.svg" alt="">Роли</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" [routerLink]="[ 'product-category/sets']">
+                    <img class="nav-img" src="../../../assets/nav-img-sets.svg" alt="">Сети</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" [routerLink]="[ 'product-category/drinks']">
+                    <img class="nav-img" src="../../../assets/nav-img-drinks.svg" alt="">Напої</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" [routerLink]="[ 'product-category/sauces']">
+                    <img class="nav-img" src="../../../assets/icon.svg" alt="">Соуси</a>
+            </li>
+            <li class="nav-item dropdown">
+                <div class="dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item">
+                    <div class="xmark" data-bs-dismiss="dropdown"></div>
+                    </li>
+                    <li><a class="dropdown-item" [routerLink]="[ '/delivery']">Доставка та оплата</a></li>
+                    <li><a class="dropdown-item" [routerLink]="[ '/about']">Про нас</a></li>
+                    <li><a class="dropdown-item" [routerLink]="[ '/discounts']">Акції</a></li>
+                </ul>
+                </div>
+            </li>
+            <li>
+                <div class="header-call-back">
+                    <img class="we-call" src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg">
+                </div>
+            </li>
+            <li>
+                <div class="header-info">
+                    <a class="header-phone"><b>(097) 878 08 37</b></a>
+                    <div class="header-work-time">Працюємо з <b>11:00</b> до <b>23:59</b></div>
+                </div>
+            </li>
+            <li>
+                <div class="user">
+                    <img class="user-img" src="../../../assets/user.svg" [routerLink]="[ '/admin']">
+                </div>
+            </li>
+            <li>
+                <div class="header-basket">
+                    <img src="../../../assets/basket.svg">
+                    <span class="number">0</span>
+                    <b class="price">0</b>
+                    <span class="price">грн</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    

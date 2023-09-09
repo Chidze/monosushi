@@ -1,0 +1,139 @@
+.dropdown-toggle::after {
+    display: none;
+}
+
+.navbar-toggler-icon {
+    width: 35px;
+    height: 33px;
+    margin-top: 5px;
+}
+
+.header-call-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: #b5d8f7;
+    border-radius: 5px;
+    margin: 0 0 0 90px;
+
+    .we-call {
+        width: 12px;
+        height: 20px;
+    }
+}
+
+.navbar {
+    font-family: sans-serif;
+    padding: 0;
+
+    li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-link {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        margin-top: 4px;
+        line-height: 1em;
+        font-weight: bold;
+        color: #252525;
+        align-items: center;
+        margin: 0 25px;
+    }
+
+    .nav-img {
+        width: 28px;
+        height: 30px;
+        height: 30px;
+    }
+
+    .header-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 0 0 70px;
+        text-align: center;
+        font-size: 14px;
+        .header-phone {
+            color: #252525;
+            text-decoration: none;
+        }
+    }
+
+    .user {
+        margin: 0 0 0 90px;
+    }
+
+    .header-basket {
+        margin: 0 0 0 97px;
+        width: 150px;
+        height: 95px;
+        background-color: #b5d8f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .number {
+            position: absolute;
+            top: 30px;
+            right: 87px;
+            color: #252525;
+            border-radius: 100%;
+            text-align: center;
+            background-color: white;
+            width: 20px;
+            height: 20px;
+        }
+
+        img {
+            margin: 0 10px 0 0;
+        }
+
+        .price {
+            margin: 0 10px 0 0;
+        }
+
+    }
+    .dropdown-menu{
+        width: 250px;
+        height: 250px;
+        border: 2px solid #b5d8f7;
+        border-radius: 8px;
+        .dropdown-item{
+            width: 100%;
+            height: 60px;
+            font-size: 15px;
+            font-weight: 600;
+        } 
+        .xmark{
+            width: 25px;
+            height: 25px;
+            background-image: url(../../../assets/xmark-solid.svg);
+            background-repeat: no-repeat;
+            margin: 25px 190px 20px 0;
+        }
+    }
+    }
+    
+
+.logo {
+    width: 166px;
+    height: 95px;
+    background-color: #b5d8f7;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+
+    &-img {
+        display: block;
+        width: 136px;
+        height: 51px;
+
+    }
+}

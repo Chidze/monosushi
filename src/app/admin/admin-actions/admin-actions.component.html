@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="adding">
+            <button type="button" *ngIf="show" class="add" (click)="add()">ДОДАТИ АКЦІЮ</button>
+            <button type="button" *ngIf="!show" class="add" (click)="noAdd()">ДОДАТИ АКЦІЮ</button>
+        <table *ngIf="show">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Назва</th>
+                    <th>Заголовок</th>
+                    <th>Опис</th>
+                    <th>Картинка</th>
+                    <th>Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let action of adminActions">
+                    <td>{{ action.data |date:'MM.YYYY' }}</td>
+                    <td>{{ action.name | slice: 0: 50 }}</td>
+                    <td>{{ action.title }}</td>
+                    <td>{{ action.description }}<span *ngIf="action.description.length> 50">...</span></td>
+                    <td>
+                        <img [src]="action.image" alt="" height="50px">
+                    </td>
+                    <td class="btn">
+                        <button (click)="editAction(action)" type="button" class="btn-min">Редагувати</button>
+                        <button [disabled]="editStatus" (click)="deleteAction(action)" type="button"
+                            class="btn-min">Видалити</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <form class="form" [formGroup]="actionsForm" *ngIf="!show" (ngSubmit)="addAction()">
+        <input formControlName="name" type="text" class="form-control name" placeholder="*Назва">
+        <input formControlName="title" type="text" class="form-control title" placeholder="*Заголовок">
+        <textarea formControlName="description" class="form-control description" placeholder="*Опис"></textarea>
+
+        <ng-container *ngIf="!isUploaded">
+            <div class="mb-3 input-group">
+                <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+            </div>
+            <div class="progress mb-3">
+                <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="uploadPercent"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isUploaded">
+            <div class="image-group">
+                <img class="image" [src]="valueByControl('image')" alt="">
+                <button type="button" class="btn-del" (click)="deleteImage()">delete</button>
+            </div>
+        </ng-container>
+        <button type="submit" class="add-checked" [disabled]="actionsForm.invalid" (click)="addAction()">{{editStatus?
+            'ЗБЕРЕГТИ АКЦІЮ' : 'ДОДАТИ АКЦІЮ'}}</button>
+
+    </form>
+</div>
