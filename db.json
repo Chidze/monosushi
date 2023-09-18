@@ -1,4 +1,54 @@
 {
-  "action": [],
-  "category": []
+  "action": [
+    {
+      "data": "2023-09-18T19:36:34.823Z",
+      "name": "Рол тижня",
+      "title": "50% знижки на \"Рол тижня\"",
+      "description": "Щотижня діє знижка 50% на один з ролів у нашому меню.\n“Рол тижня” ви можете знайти на головній сторінці нашого сайту.\nЗнижка діє при мінімальній сумі замовлення 300 грн.\nЦя акція не поєднується з іншими акціями.",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fimgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg?alt=media&token=0c28eb05-30a1-4769-b6fc-7dbacbfb1e03",
+      "id": 1
+    }
+  ],
+  "category": [
+    {
+      "name": "Роли",
+      "path": "ииии",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=ea0483b4-067c-4b9d-90ee-d001197afc8e",
+      "id": 1
+    }
+  ],
+  "product": [
+    {
+      "name": "Філадельфія",
+      "category": {
+        "name": "Роли",
+        "path": "ииии",
+        "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=ea0483b4-067c-4b9d-90ee-d001197afc8e",
+        "id": 1
+      },
+      "path": "роли",
+      "description": "сир, рис, лосось, норі, огірок",
+      "weight": "150",
+      "price": "170",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=fd518ae4-c351-4700-8187-780b26c3c219",
+      "count": 1,
+      "id": 1
+    },
+    {
+      "name": "Макі",
+      "category": {
+        "name": "Роли",
+        "path": "ииии",
+        "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=ea0483b4-067c-4b9d-90ee-d001197afc8e",
+        "id": 1
+      },
+      "path": "роли",
+      "description": "Рис, авокадо, креветка",
+      "weight": "120",
+      "price": "130",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2F4.-maki-z-krevetkoyu.jpg?alt=media&token=2be4d038-062c-4037-b8df-ea274518fcad",
+      "count": 1,
+      "id": 2
+    }
+  ]
 }

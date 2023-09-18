@@ -1,2 +1,8 @@
 <div class="roof"></div>
 <div class="header">Акції</div>
+<div class="actions" >
+    <div class="box" *ngFor="let action of userActions">
+        <img class="image" [src]="action.image">
+        <div class="name">{{ action.name }}</div>
+    </div>
+</div>

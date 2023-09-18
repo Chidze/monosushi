@@ -13,3 +13,25 @@
     color: #252525;
     margin-bottom: 30px;
 }
+.actions{
+    padding: 0 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .box{
+        width: 550px;
+        height: 500px;
+        .image{
+        width: 550px;
+        height: 400px;
+        }
+        .name{
+            text-transform: uppercase;
+            color: #252525;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    }
+}

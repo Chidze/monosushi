@@ -44,8 +44,9 @@ export class ImageService {
     return Promise.resolve(url);
   }
 
-  deleteObject(image: string): Promise<void> {
+  deleteUploadFile(image: string): Promise<void> {
     const task = ref(this.storage, image);
     return deleteObject(task);
   }
+
 }

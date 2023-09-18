@@ -1,1 +1,68 @@
-<p>admin-tovary works!</p>
+<div class="container">
+    <div class="adding">
+        <button type="button" *ngIf="show" class="add" (click)="add()">ДОДАТИ ПРОДУКТ</button>
+        <button type="button" *ngIf="!show" class="add" (click)="noAdd()">ДОДАТИ ПРОДУКТ</button>
+        <table *ngIf="show">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Категорія</th>
+                    <th>Назва</th>
+                    <th>Інгредієнти</th>
+                    <th>Вага</th>
+                    <th>Ціна</th>
+                    <th>Картинка</th>
+                    <th>Дії</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of adminProducts">
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.path }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.weight }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>
+                        <img [src]="product.image" alt="" height="50px">
+                    </td>
+                    <td class="btn">
+                        <button (click)="editProduct(product)" type="button" class="btn-min">Редагувати</button>
+                        <button [disabled]="editStatus" (click)="deleteProduct(product)" type="button"
+                            class="btn-min">Видалити</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <form class="form" [formGroup]="productForm" *ngIf="!show" (ngSubmit)="addProduct()">
+        <select formControlName="category" class="form__select rols" id="category">
+            <option [ngValue]="category" *ngFor="let category of
+                adminCategories" selected>{{category.name}}
+            </option>
+        </select>
+        <input formControlName="name" type="text" class="form-control name" placeholder="*Назва">
+        <input formControlName="path" type="text" class="form-control title" placeholder="*Шлях">
+        <input formControlName="description" type="text" class="form-control  long" placeholder="*Інгредієнти">
+        <input formControlName="weight" type="text" class="form-control name" placeholder="*Вага">
+        <input formControlName="price" type="text" class="form-control title" placeholder="*Ціна">
+        <ng-container *ngIf="!isUploaded">
+            <div class="mb-3 input-group">
+                <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+            </div>
+            <div class="progress mb-3">
+                <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="uploadPercent"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isUploaded">
+            <div class="image-group">
+                <img class="image" [src]="valueByControl('image')" alt="">
+                <button type="button" class="btn-del" (click)="deleteImage()">delete</button>
+            </div>
+        </ng-container>
+        <button type="submit" class="add-checked" [disabled]="productForm.invalid" (click)="addProduct()">{{editStatus?
+            'ЗБЕРЕГТИ ПРОДУКТ' : 'ДОДАТИ ПРОДУКТ'}}</button>
+    </form>
+</div>

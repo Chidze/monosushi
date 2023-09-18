@@ -1,0 +1,140 @@
+.form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 600px;
+    margin: 0 0 0 20px;
+
+    .name,
+    .title {
+        width: 250px;
+        height: 45px;
+        border: 1px solid gainsboro;
+        border-radius: 8px;
+        margin: 10px 10px;
+        padding: 0 0 0 20px;
+    }
+    .long {
+        width: 520px;
+        height: 45px;
+        border: 1px solid gainsboro;
+        border-radius: 8px;
+        margin: 10px 10px;
+        padding: 0 0 0 20px;
+        
+    }
+    .rols{
+        width: 520px;
+        height: 30px;
+        color: black;
+        text-align: start;
+        border: 1px solid gainsboro;
+        border-radius: 8px;
+        margin: 10px 10px;
+        padding: 0 0 0 20px;
+        background-color: #fff;
+    }
+
+    .description {
+        width: 520px;
+        height: 180px;
+        border: 1px solid gainsboro;
+        border-radius: 8px;
+        margin: 10px 10px;
+        resize: none;
+        padding: 20px 0 0 20px;
+    }
+
+    .input-group {
+        width: 520px;
+        margin: 10px 10px;
+    }
+
+    .add-checked {
+        width: 200px;
+        height: 50px;
+        background-color: #b5d8f7;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 50px 0 20px 10px;
+        color: black;
+    }
+
+    .image-group {
+        display: flex;
+        flex-direction: row;
+        width: 520px;
+        margin: 10px 10px;
+
+        .image {
+            width: 100px;
+            height: 100px;
+            margin: 0 50px 0 0;
+        }
+
+        .btn-del {
+            width: 50px;
+            background-color: rgb(213, 0, 0);
+            height: 40px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin-top: 60px;
+        }
+    }
+
+
+}
+
+.adding {
+    width: 100%;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 0 0 30px;
+        text-align: center;
+
+        tbody {
+            border-collapse: collapse;
+
+            tr {
+                border-top: 2px solid #b5d8f7;
+                border-bottom: 2px solid gainsboro;
+            }
+
+            .btn {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    .btn-min {
+        border: none;
+        background-color: #fff;
+        color: #b5d8f7;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: sans-serif;
+    }
+
+
+    .add {
+        width: 200px;
+        height: 50px;
+        background-color: #fff;
+        border: 3px solid #b5d8f7;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 50px 0 20px 30px;
+    }
+
+   
+
+}

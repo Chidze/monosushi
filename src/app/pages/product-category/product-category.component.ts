@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 
 @Component({
   selector: 'app-product-category',

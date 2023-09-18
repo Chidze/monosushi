@@ -1,1 +1,19 @@
-<p>rolls works!</p>
+<div class="product" >
+    <div class="box" *ngFor="let product of userProducts">
+        <img class="image" [src]="product.image">
+        <div class="name">{{ product.name }}</div>
+        <div class="info">
+            <span class="description">{{ product.description }}</span>
+            <span class="weight">{{ product.weight }} <span>г</span></span>
+        </div>
+        <div class="priceCount">
+            <p class="price">{{ product.price}} <span>грн</span></p>
+            <div class="buttonsArea">
+                <button type="button">-</button>
+                <span class="count">{{ product.count }}</span>
+                <button type="button">+</button>
+            </div>
+            <button type="button" class="order">Замовити</button>
+        </div>
+    </div>
+</div>
