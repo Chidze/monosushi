@@ -1,54 +1,128 @@
 {
   "action": [
     {
-      "data": "2023-09-18T19:36:34.823Z",
+      "data": "2023-09-27T13:47:20.423Z",
       "name": "Рол тижня",
       "title": "50% знижки на \"Рол тижня\"",
       "description": "Щотижня діє знижка 50% на один з ролів у нашому меню.\n“Рол тижня” ви можете знайти на головній сторінці нашого сайту.\nЗнижка діє при мінімальній сумі замовлення 300 грн.\nЦя акція не поєднується з іншими акціями.",
-      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fimgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg?alt=media&token=0c28eb05-30a1-4769-b6fc-7dbacbfb1e03",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fimgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg?alt=media&token=e1ff8a31-a78d-443d-aeef-b82b881435a4",
       "id": 1
+    },
+    {
+      "data": "2023-09-27T13:49:53.743Z",
+      "name": "3+1=5",
+      "title": "\"3+1=5\"",
+      "description": "Замовляйте 5 ролів, а платіть за 4.\nЗамовляйте 10 ролів, а платіть за 8 і так далі.\nБезкоштовним вважається рол з найменшою вартістю.\nЦя акція не поєднується з іншими акціями.",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fimgonline-com-ua-compressed-ajbic74qfau00-scaled-697x379.jpg?alt=media&token=2e3c0408-b4a7-462c-9bf0-9c569f8779bf",
+      "id": 2
     }
   ],
   "category": [
     {
       "name": "Роли",
-      "path": "ииии",
-      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=ea0483b4-067c-4b9d-90ee-d001197afc8e",
+      "path": "rolls",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=64b79dfa-e41e-4213-b48b-299c825c3d75",
       "id": 1
+    },
+    {
+      "name": "Сети",
+      "path": "sets",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=680ef1df-c265-47d3-b6f2-722bf6babec9",
+      "id": 2
+    },
+    {
+      "name": "Напої",
+      "path": "drinks",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fnav-img-drinks.svg?alt=media&token=35eec57f-0f4f-4ab0-bb2d-88e9f0f9cfc9",
+      "id": 3
+    },
+    {
+      "name": "Соуси",
+      "path": "souse",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Ficon.svg?alt=media&token=98219301-9386-4804-90d7-b68da59b0e36",
+      "id": 4
     }
   ],
   "product": [
     {
-      "name": "Філадельфія",
+      "name": "Філадельфія з тунцем",
       "category": {
         "name": "Роли",
-        "path": "ииии",
-        "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=ea0483b4-067c-4b9d-90ee-d001197afc8e",
+        "path": "rolls",
+        "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=64b79dfa-e41e-4213-b48b-299c825c3d75",
         "id": 1
       },
-      "path": "роли",
-      "description": "сир, рис, лосось, норі, огірок",
-      "weight": "150",
-      "price": "170",
-      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=fd518ae4-c351-4700-8187-780b26c3c219",
+      "path": "filadelfiya-z-tunczem",
+      "description": "Риc, крем сир, авокадо, тунець, cоус солодкий чилі",
+      "weight": "270",
+      "price": "312",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fphoto_2022-07-09_13-28-56.jpg?alt=media&token=ed84c2a1-921a-4f47-a5c8-2326b62cde66",
       "count": 1,
       "id": 1
     },
     {
-      "name": "Макі",
+      "name": "Запечений сет",
       "category": {
-        "name": "Роли",
-        "path": "ииии",
-        "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=ea0483b4-067c-4b9d-90ee-d001197afc8e",
-        "id": 1
+        "name": "Сети",
+        "path": "sets",
+        "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=680ef1df-c265-47d3-b6f2-722bf6babec9",
+        "id": 2
       },
-      "path": "роли",
-      "description": "Рис, авокадо, креветка",
-      "weight": "120",
-      "price": "130",
-      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2F4.-maki-z-krevetkoyu.jpg?alt=media&token=2be4d038-062c-4037-b8df-ea274518fcad",
-      "count": 1,
+      "path": "zapechenyj-set-2",
+      "description": "Запечений сирний з креветкою Запечений моно з лососем",
+      "weight": "680",
+      "price": "590",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fimgonline-com-ua-compressed-wnclohqe80-scaled.jpg?alt=media&token=6940ab4f-e84f-4de0-9fc8-5a3467126b8a",
+      "count": null,
       "id": 2
+    },
+    {
+      "name": "Coca cola",
+      "category": {
+        "name": "Напої",
+        "path": "drinks",
+        "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fnav-img-drinks.svg?alt=media&token=35eec57f-0f4f-4ab0-bb2d-88e9f0f9cfc9",
+        "id": 3
+      },
+      "path": "coca-cola",
+      "description": "coca-cola",
+      "weight": "0.33",
+      "price": "31",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fcola2.jpg?alt=media&token=de1e1dbb-0c20-43a3-b039-7865ff7a703f",
+      "count": null,
+      "id": 3
+    },
+    {
+      "name": "Імбир",
+      "category": {
+        "name": "Соуси",
+        "path": "souse",
+        "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Ficon.svg?alt=media&token=98219301-9386-4804-90d7-b68da59b0e36",
+        "id": 4
+      },
+      "path": "imbyr",
+      "description": "імбир",
+      "weight": "30",
+      "price": "12",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2F3333.png?alt=media&token=b8370b16-0250-424b-9b49-ad5ced8f091a",
+      "count": null,
+      "id": 4
+    },
+    {
+      "name": "Сік мультивітамін “Sandora”",
+      "category": {
+        "name": "Напої",
+        "path": "drinks",
+        "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fnav-img-drinks.svg?alt=media&token=35eec57f-0f4f-4ab0-bb2d-88e9f0f9cfc9",
+        "id": 3
+      },
+      "path": "sik-multyfruktovyj-galicia",
+      "description": "Сік мультивітамін “Sandora”",
+      "weight": "1",
+      "price": "75",
+      "image": "https://firebasestorage.googleapis.com/v0/b/actions-162bb.appspot.com/o/images%2Fsandora-multyvitamin.png?alt=media&token=62ef942b-21ef-4ec3-8554-510975c1f77b",
+      "count": 1,
+      "id": 5
     }
   ]
 }

@@ -1,0 +1,19 @@
+ <div class="box">
+        <img class="image"  [src]="currentProduct.image" alt="currentProduct.name">
+        <div class="text">
+        <div class="name">{{ currentProduct.name }}</div>
+        <div class="info">
+            <span class="description"><span class="blue">Склад:</span>{{ currentProduct.description }}</span>
+            <span class="weight"><span class="blue">Вага:</span>{{ currentProduct.weight }} <span>г</span></span>
+        </div>
+        <div class="priceCount">
+            <p class="price">{{ currentProduct.price * currentProduct.count}} <span>грн</span></p>
+            <div class="buttonsArea">
+                <button type="button" (click)="productCount(currentProduct, false)">-</button>
+                <span class="count">{{currentProduct.count}}</span>
+                <button type="button" (click)="productCount(currentProduct, true)">+</button>
+            </div>
+            <button type="button" class="order" (click)="addToBasket(currentProduct)">Замовити</button>
+        </div>
+    </div>
+</div>

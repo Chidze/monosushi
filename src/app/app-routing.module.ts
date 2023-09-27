@@ -5,10 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ActionsComponent } from './pages/actions/actions.component';
 import { ActionsInfoComponent } from './pages/actions-info/actions-info.component';
 import { ProductCategoryComponent } from './pages/product-category/product-category.component';
-import { RollsComponent } from './pages/product-category/rolls/rolls.component';
-import { SetsComponent } from './pages/product-category/sets/sets.component';
-import { DrinksComponent } from './pages/product-category/drinks/drinks.component';
-import { SaucesComponent } from './pages/product-category/sauces/sauces.component';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DiscountsComponent } from './pages/discounts/discounts.component';
@@ -17,18 +14,16 @@ import { AdminActionsComponent } from './admin/admin-actions/admin-actions.compo
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
 import { AdminTovaryComponent } from './admin/admin-tovary/admin-tovary.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+
+import { productInfoResolver } from './shared/services/product/product-info.resolver';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'actions', component: ActionsComponent },
-  { path: 'actions-info', component: ActionsInfoComponent },
-  {
-    path: 'product-category', component: ProductCategoryComponent, children: [
-      { path: 'rolls', component: RollsComponent },
-      { path: 'sets', component: SetsComponent },
-      { path: 'drinks', component: DrinksComponent },
-      { path: 'sauces', component: SaucesComponent }
-    ]
-  },
+  { path: 'actions/:id', component: ActionsInfoComponent },
+  { path: 'product-category/:category', component: ProductCategoryComponent },
+  { path: 'product/:category/:id', component: ProductInfoComponent, resolve: {
+    productInfo: productInfoResolver
+  }},
   { path: 'delivery', component: DeliveryComponent },
   { path: 'about', component: AboutComponent },
   { path: 'discounts', component: DiscountsComponent },

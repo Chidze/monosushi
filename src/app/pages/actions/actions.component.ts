@@ -22,4 +22,6 @@ ngOnInit(): void {
 loadActions():void{
     this.actionService.getAll().subscribe((data) => {this.userActions = data});
 }
+
+
 }

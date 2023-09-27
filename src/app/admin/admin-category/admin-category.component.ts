@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ICategory } from 'src/app/shared/interfaces/category/category.interface';
+import { ICategoryRequest, ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ImageService } from 'src/app/shared/services/image/image.service';
 import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
@@ -12,7 +12,7 @@ import { CategoryService } from 'src/app/shared/services/category/category.servi
 })
 
 export class AdminCategoryComponent implements OnInit{
-  public adminCategories!: ICategory[];
+  public adminCategories!: ICategoryResponse[];
   public categoriesForm !: FormGroup;
   public editStatus = false;
   public currentID!:number;
@@ -62,7 +62,7 @@ addCategory():void{
 
 }
 
-editCategory(category: ICategory): void {
+editCategory(category: ICategoryResponse): void {
   this.categoriesForm.patchValue({ 
     id: category.id,
     name: category.name,
@@ -75,7 +75,7 @@ editCategory(category: ICategory): void {
   this.isUploaded = true;
 }
 
-deleteCategory(category: ICategory): void {
+deleteCategory(category: ICategoryResponse): void {
   this.categoryService.delete(category.id).subscribe(() => { this.loadCategories() })
 }
 

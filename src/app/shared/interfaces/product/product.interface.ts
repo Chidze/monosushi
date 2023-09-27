@@ -1,7 +1,7 @@
-import { ICategory } from "../category/category.interface";
+import { ICategoryResponse } from "../category/category.interface";
 
 export interface IProductRequest {
-    category: ICategory;
+    category: ICategoryResponse;
     name: string;
     path: string,
     description: string;

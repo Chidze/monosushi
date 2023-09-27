@@ -14,10 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ActionsComponent } from './pages/actions/actions.component';
 import { ActionsInfoComponent } from './pages/actions-info/actions-info.component';
 import { ProductCategoryComponent } from './pages/product-category/product-category.component';
-import { RollsComponent } from './pages/product-category/rolls/rolls.component';
-import { SetsComponent } from './pages/product-category/sets/sets.component';
-import { DrinksComponent } from './pages/product-category/drinks/drinks.component';
-import { SaucesComponent } from './pages/product-category/sauces/sauces.component';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DiscountsComponent } from './pages/discounts/discounts.component';
@@ -41,10 +38,7 @@ import { ToastrModule } from 'ngx-toastr';
     ActionsComponent,
     ActionsInfoComponent,
     ProductCategoryComponent,
-    RollsComponent,
-    SetsComponent,
-    DrinksComponent,
-    SaucesComponent,
+    ProductInfoComponent,
     DeliveryComponent,
     AboutComponent,
     DiscountsComponent,
@@ -52,7 +46,7 @@ import { ToastrModule } from 'ngx-toastr';
     AdminActionsComponent,
     AdminCategoryComponent,
     AdminTovaryComponent,
-    AdminOrdersComponent
+    AdminOrdersComponent,
   ],
   imports: [
     BrowserModule,

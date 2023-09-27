@@ -1,46 +1,36 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
-  selector: 'app-product-category',
-  templateUrl: './product-category.component.html',
-  styleUrls: ['./product-category.component.scss']
+  selector: 'app-product-info',
+  templateUrl: './product-info.component.html',
+  styleUrls: ['./product-info.component.scss']
 })
-export class ProductCategoryComponent implements OnInit, OnDestroy {
-
-  public userProducts: Array<IProductResponse> = [];
-  private eventSubscription!: Subscription;
- 
+export class ProductInfoComponent implements OnInit{
+  public currentProduct! :IProductResponse;
 
   constructor(
     private productService: ProductService,
-    private orderService: OrderService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
-  ) {
-    this.eventSubscription = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.loadProduct();
-      }
-    });
+    private orderService: OrderService){}
+    
+  ngOnInit(): void {
+    this.activatedRoute.data.subscribe(response => {
+      this.currentProduct = response['productInfo'];
+    })
   }
-
-  ngOnInit(): void {}
- 
-
+  
   loadProduct(): void {
-    const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    this.productService.getAllByCategory(categoryName).subscribe((data) => {
-        this.userProducts = data;
-    });
+    const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.productService.getOne(id).subscribe(data => {
+      this.currentProduct = data;
+    })
   }
-  ngOnDestroy(): void {
-    this.eventSubscription.unsubscribe();
-  }
+
+
   productCount(product: IProductResponse, value: boolean): void {
     if (value) {
       ++product.count;
@@ -48,6 +38,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
       --product.count;
     }
   }
+
   addToBasket(product: IProductResponse): void {
     let basket: Array<IProductResponse> = [];
     if (localStorage.length > 0 && localStorage.getItem('basket')) {
@@ -56,7 +47,6 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
         const index = basket.findIndex((prod) => prod.id === product.id);
         basket[index].count =
           Number(basket[index].count) + Number(product.count);
-        console.log(typeof basket[index].count);
       } else {
         basket.push(product);
       }

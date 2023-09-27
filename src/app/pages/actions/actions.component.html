@@ -4,5 +4,7 @@
     <div class="box" *ngFor="let action of userActions">
         <img class="image" [src]="action.image">
         <div class="name">{{ action.name }}</div>
+        <div class="line"></div>
+        <button type="button" class="seeMore" [routerLink]="[ '/actions', action.id ]">Дізнатись більше</button>
     </div>
 </div>

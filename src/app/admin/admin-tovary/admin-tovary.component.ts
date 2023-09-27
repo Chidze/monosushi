@@ -4,7 +4,7 @@ import { ImageService } from 'src/app/shared/services/image/image.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { ToastrService } from 'ngx-toastr';
-import { ICategory } from 'src/app/shared/interfaces/category/category.interface';
+import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { CategoryService } from 'src/app/shared/services/category/category.servi
   styleUrls: ['./admin-tovary.component.scss']
 })
 export class AdminTovaryComponent implements OnInit{
-  public adminCategories: Array<ICategory> = []; 
+  public adminCategories: Array<ICategoryResponse> = []; 
   public adminProducts!: IProductResponse[];
   public productForm !: FormGroup;
   public editStatus = false;
@@ -92,8 +92,7 @@ export class AdminTovaryComponent implements OnInit{
       description: product.description,
       weight: product.weight,
       price: product.price,
-      image: product.image,
-      count: [1],
+      image: product.image
     })
     this.editStatus = true;
     this.currentTovarID = product.id;

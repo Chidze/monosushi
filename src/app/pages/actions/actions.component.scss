@@ -14,16 +14,25 @@
     margin-bottom: 30px;
 }
 .actions{
-    padding: 0 50px;
+    
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     .box{
+        margin: 0 40px;
         width: 550px;
         height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
         .image{
+        border-radius: 10px;
         width: 550px;
-        height: 400px;
+        height: 350px;
         }
         .name{
             text-transform: uppercase;
@@ -32,6 +41,24 @@
             text-align: center;
             margin-top: 20px;
             font-size: 20px;
+        }
+        .line{
+            width: 100%;
+            height: 3px;
+            background: #b5d8f7;
+            margin: 20px 0;
+        }
+        .seeMore{
+            width: 257px;
+            height: 45px;
+            border: none;
+            border-radius: 10px;
+            color: #252525;
+            text-transform: uppercase;
+            font-size: 14px;
+            line-height: 14px;
+            font-weight: bold;
+            background: #b5d8f7;
         }
     }
 }

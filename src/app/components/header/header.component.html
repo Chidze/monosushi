@@ -10,19 +10,19 @@
                     <img class="nav-img" src="../../../assets/nav-img-gift.svg" alt="">Акції</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" [routerLink]="[ 'product-category/rolls']">
+                <a class="nav-link active"  [routerLink]="[ '/product-category/rolls']" >
                     <img class="nav-img" src="../../../assets/nav-img-rolls.svg" alt="">Роли</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" [routerLink]="[ 'product-category/sets']">
+                <a class="nav-link active" [routerLink]="[ '/product-category/sets']">
                     <img class="nav-img" src="../../../assets/nav-img-sets.svg" alt="">Сети</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" [routerLink]="[ 'product-category/drinks']">
+                <a class="nav-link active" [routerLink]="[ '/product-category/drinks']">
                     <img class="nav-img" src="../../../assets/nav-img-drinks.svg" alt="">Напої</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" [routerLink]="[ 'product-category/sauces']">
+                <a class="nav-link active" [routerLink]="[ '/product-category/souse']">
                     <img class="nav-img" src="../../../assets/icon.svg" alt="">Соуси</a>
             </li>
             <li class="nav-item dropdown">
@@ -59,8 +59,7 @@
             <li>
                 <div class="header-basket">
                     <img src="../../../assets/basket.svg">
-                    <span class="number">0</span>
-                    <b class="price">0</b>
+                    <b class="price">{{ total }}</b>
                     <span class="price">грн</span>
                 </div>
             </li>

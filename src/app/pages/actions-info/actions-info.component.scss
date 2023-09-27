@@ -1,0 +1,36 @@
+.actions{
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    .box{
+        margin: 0 40px;
+        width: 550px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .image{
+        border-radius: 10px;
+        width: 550px;
+        height: 350px;
+        }
+        .name{
+            text-transform: uppercase;
+            color: #252525;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        .text{
+            margin-top: 20px;
+            font-size: 18px;
+            color: #5a5a5a;
+        }
+    }
+}

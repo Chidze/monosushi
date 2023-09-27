@@ -1,9 +1,9 @@
 <div class="roof"></div>
 <div class="header">Продукти</div>
 <div class="adding">
-<ul class="nav nav-tabs tab">
+<ul class="nav nav-tabs tab" >
   <li class="nav-item">
-    <a class="nav-link active" [routerLink]="[ '/product-category/rolls']">Всі</a>
+    <a class="nav-link active" [routerLink]="[ '/product-category']">Всі</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Філадельфія</a>
@@ -24,5 +24,24 @@
     <a class="nav-link" href="#">Преміум</a>
   </li>
 </ul>
-<router-outlet></router-outlet>
+</div>
+
+<div class="product" >
+  <div class="box" *ngFor="let product of userProducts">
+      <img class="image" [routerLink]="['/product/'+product.category.path, product.id ]" [src]="product.image" [alt]="product.name">
+      <div class="name" [routerLink]="[ '/product/'+product.category.path, product.id ]">{{ product.name }}</div>
+      <div class="info">
+          <span class="description">{{ product.description }}</span>
+          <span class="weight">{{ product.weight }} <span>г</span></span>
+      </div>
+      <div class="priceCount">
+          <p class="price">{{ product.price * product.count }} <span>грн</span></p>
+          <div class="buttonsArea">
+              <button type="button"  (click)="productCount(product, false)">-</button>
+              <span class="count"> {{ product.count }} </span>
+              <button type="button" (click)="productCount(product, true)">+</button>
+          </div>
+          <button type="button" class="order" (click)="addToBasket(product)">Замовити</button>
+      </div>
+  </div>
 </div>

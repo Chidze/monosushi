@@ -18,8 +18,8 @@ export class ActionService {
 getAll(): Observable <IActionResponse[]> {
    return this.http.get<IActionResponse[]>(this.api.action)
 }
-getOne(id:number):Observable<IActionResponse[]> {
-  return this.http.get<IActionResponse[]>(this.api.action);
+getOne(id: number): Observable<IActionResponse> {
+  return this.http.get<IActionResponse>(`${this.api.action}/${id}`);;
 }
 
 create(action:IActionRequest): Observable<IActionResponse> {
