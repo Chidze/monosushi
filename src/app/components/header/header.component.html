@@ -52,9 +52,14 @@
                 </div>
             </li>
             <li>
-                <div class="user">
-                    <img class="user-img" src="../../../assets/user.svg" [routerLink]="[ '/admin']">
+              
+                <div class="login" *ngIf="isLogin" [routerLink]="[ '/'+loginUrl ]"  routerLinkActive="route-active">
+                    <p>{{ loginPage}}</p>
                 </div>
+                <div class="unlogin" *ngIf="!isLogin">
+                    <img class="user-img" src="../../../assets/user.svg" data-bs-toggle="modal" data-bs-target="#Modal" [routerLink]="[ '/auth']">
+                </div>
+        
             </li>
             <li>
                 <div class="header-basket">
@@ -66,6 +71,7 @@
         </ul>
     </div>
 </nav>
+
 
 
     

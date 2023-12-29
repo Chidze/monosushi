@@ -124,5 +124,21 @@
       "count": 1,
       "id": 5
     }
+  ],
+  "auth": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "12345",
+      "fullName": "Admin Adminovych",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "email": "user@gmail.com",
+      "password": "12345",
+      "fullName": "User Userovych",
+      "role": "user"
+    }
   ]
 }

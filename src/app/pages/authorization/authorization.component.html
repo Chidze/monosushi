@@ -1,0 +1,22 @@
+<div class="container">
+    <form [formGroup]="authForm" (ngSubmit)="login()">
+        <div class="modal-window" id="Modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Вхід в кабінет</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            [routerLink]="[ '/']"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="email" formControlName="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="*Ваш email">
+                        <input type="password" formControlName="password" name="password" id="inputPassword6" class="form-control"
+                            aria-describedby="passwordHelpInline" placeholder="*Пароль">
+                        <button type="submit" [disabled]="authForm.invalid" class="enter">Увійти в кабінет</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

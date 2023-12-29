@@ -16,6 +16,11 @@ import { AdminTovaryComponent } from './admin/admin-tovary/admin-tovary.componen
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 
 import { productInfoResolver } from './shared/services/product/product-info.resolver';
+import { AuthGuard } from './shared/guards/auth/auth.guard';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
+
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'actions', component: ActionsComponent },
@@ -27,8 +32,10 @@ const routes: Routes = [
   { path: 'delivery', component: DeliveryComponent },
   { path: 'about', component: AboutComponent },
   { path: 'discounts', component: DiscountsComponent },
+  { path: 'auth', component: AuthorizationComponent},
+  { path: 'cabinet', component: CabinetComponent, canActivate: [AuthGuard]},
   {
-    path: 'admin', component: AdminComponent, children: [
+    path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
       { path: 'admin-actions', component: AdminActionsComponent },
       { path: 'admin-category', component: AdminCategoryComponent },
       { path: 'admin-tovary', component: AdminTovaryComponent },
