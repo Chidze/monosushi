@@ -1,2 +1,38 @@
-<p>cabinet works!</p>
-<button type="button" class="exit" (click)="logOut()">ВИХІД</button>
+<div class="container">
+    <div class="panel">
+        <div class="line"></div>
+        <button type="button" class="item" [routerLink]="[ 'admin-actions']">Особисті дані</button>
+        <button type="button" class="item" [routerLink]="[ 'admin-actions']">Історія замовлень</button>
+    </div>
+    <div class="info">
+        <div class="title">
+            <div class="number">1</div>
+            <div class="chapter">Особистий кабінет</div>
+        </div>
+        <div class="form-group">
+            <span>
+                <input name="name" type="text" class="small" placeholder="*Ваше ім`я" required>
+            </span>
+            <span>
+                <input name="name" type="text" class="small" placeholder="*Ваше прізвище" required>
+            </span>
+            <span>
+                <input name="tel" type="text" class="big" placeholder="*Ваш номер телефону"
+                    required=""
+                    readonly="" inputmode="text">
+            </span>
+            <span>
+                <input name="name" type="text" class="big" placeholder="*Ваш email" required>
+            </span>
+        </div>
+        <div class="title">
+        <div class="number">2</div>
+        <div class="chapter">Адреси</div>
+    </div>
+        <div class="buttons">
+        <button type="button" class="button" [routerLink]="[ 'admin-actions']">Додати адресу</button>
+        <button type="button" class="button" [routerLink]="[ 'admin-actions']">Зберегти зміни</button>
+    </div>
+        <button type="button" class="exit" (click)="logOut()">ВИХІД</button>
+    </div>
+</div>

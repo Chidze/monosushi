@@ -1,5 +1,12 @@
 {
   "storage": {
     "rules": "storage.rules"
-  }
+  },
+  "hosting": [
+    {
+      "target": "lesson8",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
 }

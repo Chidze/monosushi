@@ -131,14 +131,14 @@
       "email": "admin@gmail.com",
       "password": "12345",
       "fullName": "Admin Adminovych",
-      "role": "admin"
+      "role": "ADMIN"
     },
     {
       "id": 2,
       "email": "user@gmail.com",
       "password": "12345",
       "fullName": "User Userovych",
-      "role": "user"
+      "role": "USER"
     }
   ]
 }

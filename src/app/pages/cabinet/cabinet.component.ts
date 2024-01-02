@@ -18,4 +18,10 @@ export class CabinetComponent {
     localStorage.removeItem('currentUser');
     this.accountService.isUserLogin$.next(true);
    }
+
+   signOut(): void {
+    this.router.navigate(['/']);
+    localStorage.removeItem('currentUser');
+    this.accountService.isUserLogin$.next(true);
+  }
 }

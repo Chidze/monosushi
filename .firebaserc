@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "actions-162bb"
+  },
+  "targets": {
+    "actions-162bb": {
+      "hosting": {
+        "lesson8": [
+          "actions-162bb"
+        ]
+      }
+    }
   }
 }

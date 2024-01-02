@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {trigger,state,style,animate,transition}from '@angular/animations';
 
 import { HomeComponent } from './pages/home/home.component';
 import { ActionsComponent } from './pages/actions/actions.component';

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ROLE } from 'src/app/shared/constants/role.constant';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/order/order.service';
 import { AccountService } from 'src/app/shared/services/account/account.service';
+import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
+import { BasketDialogComponent } from '../basket-dialog/basket-dialog.component';
 
 
 @Component({
@@ -12,19 +15,20 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 })
 export class HeaderComponent implements OnInit {
 
-    public total = 0;
-    private basket: Array<IProductResponse> = [];
-    public isLogin = false;
-    public loginUrl = '';
-    public loginPage = '';
+  public total = 0;
+  private basket: Array<IProductResponse> = [];
+  public isLogin = false;
+  public loginUrl = '';
+  public loginPage = '';
 
 
-    constructor(
-      private orderService: OrderService,
-      private accountService: AccountService,
-    ) { }
-  
-    ngOnInit(): void {
+  constructor(
+    private orderService: OrderService,
+    private accountService: AccountService,
+    public dialog: MatDialog
+  ) { }
+
+  ngOnInit(): void {
     this.loadBasket();
     this.updateBasket();
     this.checkUserLogin();
@@ -32,7 +36,7 @@ export class HeaderComponent implements OnInit {
   }
 
   loadBasket(): void {
-    if(localStorage.length > 0 && localStorage.getItem('basket')){
+    if (localStorage.length > 0 && localStorage.getItem('basket')) {
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
     }
     this.getTotalPrice();
@@ -67,10 +71,26 @@ export class HeaderComponent implements OnInit {
       this.loginPage = '';
     }
   }
-  
+
   checkUpdateUserLogin(): void {
     this.accountService.isUserLogin$.subscribe(() => {
       this.checkUserLogin();
     });
+  }
+
+  openLoginDialog(): void {
+    this.dialog.open(AuthDialogComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'auth-dialog',
+      autoFocus: false
+    })
+  }
+
+  openBasketDialog(): void {
+    this.dialog.open(BasketDialogComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'basket-dialog',
+      autoFocus: false
+    })
   }
 }

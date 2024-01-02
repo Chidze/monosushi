@@ -1,0 +1,70 @@
+<form>
+<ng-container *ngIf="!isLogin; else elseTemplate">
+    <form [formGroup]="authForm" class="auth">
+        <div class="title">Вхід в кабінет</div>
+        <div class="form-group">
+            <mat-form-field appearance="outline" color="primary">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="outline" color="primary">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password">
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="button" (click)="loginUser()" mat-dialog-close>Увійти в
+            кабінет</button>
+    </form>
+</ng-container>
+<ng-template #elseTemplate>
+    <form [formGroup]="registerForm" class="register">
+        <div class="title">Зареєструватись</div>
+<div class="row">
+        <div class="form-group little">
+            <mat-form-field  color="primary">
+                <mat-label>Ваше ім'я</mat-label>
+                <input matInput type="firstName" formControlName="firstName" >
+            </mat-form-field>
+        </div>
+        <div class="form-group little">
+            <mat-form-field  color="primary">
+                <mat-label >Ваше прізвище</mat-label>
+                <input matInput type="lastName" formControlName="lastName">
+            </mat-form-field>
+        </div>
+    </div>
+        <div class="form-group big">
+            <mat-form-field color="primary">
+                <mat-label >Ваш телефон</mat-label>
+                <input matInput type="phone" formControlName="phone">
+            </mat-form-field>
+        </div>
+        <div class="form-group big">
+            <mat-form-field  color="primary">
+                <mat-label >Ваш email</mat-label>
+                <input matInput type="email" formControlName="email" >
+            </mat-form-field>
+        </div>
+        <div class="row">
+        <div class="form-group little">
+            <mat-form-field  color="primary">
+                <mat-label>Пароль</mat-label>
+                <input matInput type="password1" formControlName="password1">
+            </mat-form-field>
+        </div>
+        <div class="form-group little">
+            <mat-form-field  color="primary">
+                <mat-label >Повторіть пароль</mat-label>
+                <input matInput type="password2" formControlName="password2">
+            </mat-form-field>
+        </div>
+    </div>
+        <button mat-raised-button color="primary" type="button" (click)="registerUser()"
+        mat-dialog-close class="button">Зареєструватися</button>
+        </form>
+</ng-template>
+
+<a class="txt2" (click)="changeIsLogin()">{{ !isLogin ? 'Зареструватись' : 'Вже зарестровані? Увійти'}}</a>
+</form>
