@@ -28,8 +28,8 @@
 
 <div class="product" >
   <div class="box" *ngFor="let product of userProducts">
-      <img class="image" [routerLink]="['/product/'+product.category.path, product.id ]" [src]="product.image" [alt]="product.name">
-      <div class="name" [routerLink]="[ '/product/'+product.category.path, product.id ]">{{ product.name }}</div>
+      <img class="image" [routerLink]="['/product-category/'+product.category.path, product.id ]" [src]="product.image" [alt]="product.name">
+      <div class="name" [routerLink]="[ '/product-category/'+product.category.path, product.id ]">{{ product.name }}</div>
       <div class="info">
           <span class="description">{{ product.description }}</span>
           <span class="weight">{{ product.weight }} <span>г</span></span>
