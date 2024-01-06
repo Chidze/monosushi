@@ -12,15 +12,25 @@ const MATERIAL = [
     MatButtonModule
 ];
 
-import { ReactiveFormsModule } from '@angular/forms';
+//other modules
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule ({
     declarations: [],
     imports: [
-        ...MATERIAL, ReactiveFormsModule
+        ...MATERIAL,
+      ReactiveFormsModule,
+      FormsModule,
+      HttpClientModule,
+
     ],
     exports: [
-        ...MATERIAL, ReactiveFormsModule
+        ...MATERIAL, ReactiveFormsModule,
+      FormsModule,
+      ReactiveFormsModule,
+      HttpClientModule,
+
     ]
 })
 

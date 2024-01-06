@@ -11,14 +11,13 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 export class HomeComponent implements OnInit {
   public userProducts: Array<IProductResponse> = [];
 
-
   constructor(
     private productService: ProductService
   ) {}
 ngOnInit(): void {
   this.loadProduct();
 }
-  
+
 
 loadProduct(): void {
   this.productService.getAll().subscribe((data) => {

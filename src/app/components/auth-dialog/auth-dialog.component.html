@@ -51,18 +51,19 @@
         <div class="form-group little">
             <mat-form-field  color="primary">
                 <mat-label>Пароль</mat-label>
-                <input matInput type="password1" formControlName="password1">
+                <input  matInput type="password1" formControlName="password1">
             </mat-form-field>
         </div>
         <div class="form-group little">
             <mat-form-field  color="primary">
                 <mat-label >Повторіть пароль</mat-label>
-                <input matInput type="password2" formControlName="password2">
+                <input (input)="checkConfirmedPassword()" matInput type="password2" formControlName="password2">
             </mat-form-field>
+          <mat-error *ngIf="checkVisibilityError('password2', 'matchError')">Паролі мають співпадати</mat-error>
         </div>
     </div>
         <button mat-raised-button color="primary" type="button" (click)="registerUser()"
-        mat-dialog-close class="button">Зареєструватися</button>
+        mat-dialog-close class="button"  [disabled]="registerForm.invalid" >Зареєструватися</button>
         </form>
 </ng-template>
 

@@ -1,9 +1,30 @@
 <div class="container">
+<div class="basket-product" *ngIf="basketArray.length> 0" >
+  <div class="orders" *ngFor="let product of basketArray">
+    <img [routerLink]="[ '/product-category/'+product.category.path, product.id ]"
+         [src]="product.image" [alt]="product.name" class="image">
+    <div class="name">{{product.name}}</div>
+    <div class="buttonsArea">
+      <button (click)="productCount(product, true)"
+              class="basket__product__count__plus">+</button>
+      <span>{{product.count}}</span>
+      <button (click)="productCount(product, false)"
+              class="basket__product__count__min">-</button>
+    </div>
+    <p class="count">{{product.count*product.price}} грн</p>
+    <button class="delete" (click)="deleteBasketProduct(product)">X</button>
+  </div>
+</div>
+
+
+  <div class="basket-zero" *ngIf="basketArray.length <= 0">
 <img  class="image" src="../../../assets/cart-empty-img.svg" alt="">
 <div class="no-items">Кошик порожній</div>
-<button type="button" class="go">Перейти до каталогу</button>
+<button type="button" class="go" [routerLink]="['product-category/rolls']" mat-dialog-close >Перейти до каталогу</button>
+</div>
+
 <div class="footer">
-    <div class="count">Сума:<div class="number">0</div>грн</div>
-    <button type="button" class="order">Оформити замовлення</button>
+  <div class="count">Сума:<div class="number">{{total}}</div>грн</div>
+  <button type="button" class="order" [disabled]="basketArray.length <= 0" >Оформити замовлення</button>
 </div>
 </div>

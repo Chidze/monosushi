@@ -1,0 +1,38 @@
+.form{
+  padding: 50px;
+  .title{
+    color: #252525;
+    font-weight: bold;
+    font-size: 34px;
+    font-family: sans-serif;
+    text-align: center;
+  }
+  .text{
+    max-width: 390px;
+    margin: auto;
+    font-size: 16px;
+    font: inherit;
+    text-align: center;
+    color: #5a5a5a;
+    margin-bottom: 15px;
+  }
+  mat-form-field{
+    width: 500px;
+  }
+      .mat-mdc-text-field-wrapper{
+        width: 450px;
+      }
+.send{
+  width: 500px;
+  height: 55px;
+  border: 2px solid #b5d8f7;
+  background: #b5d8f7;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  color: #252525;
+}
+}

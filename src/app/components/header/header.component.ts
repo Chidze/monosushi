@@ -6,7 +6,8 @@ import { OrderService } from 'src/app/shared/order/order.service';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 import { BasketDialogComponent } from '../basket-dialog/basket-dialog.component';
-
+import { PhoneDialogComponent } from '../phone-dialog/phone-dialog.component';
+import { SharedModule} from '../../shared/shared.module';
 
 @Component({
   selector: 'app-header',
@@ -90,6 +91,14 @@ export class HeaderComponent implements OnInit {
     this.dialog.open(BasketDialogComponent, {
       backdropClass: 'dialog-back',
       panelClass: 'basket-dialog',
+      autoFocus: false
+    })
+  }
+
+  openPhoneDialog(): void {
+    this.dialog.open(PhoneDialogComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'phone-dialog',
       autoFocus: false
     })
   }

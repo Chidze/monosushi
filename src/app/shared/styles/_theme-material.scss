@@ -64,13 +64,12 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
 
 
 .dialog-back{
-  background-color: rgba(1, 1, 1, 0.518); 
-}
-.auth-dialog{
-  width: 600px;
-  // height: 400px;
+  background-color: rgba(1, 1, 1, 0.518);
 }
 
+.auth-dialog{
+  width: 600px;
+}
 
 .basket-dialog{
   width: 500px;
@@ -78,4 +77,8 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
   position: absolute !important;
   top: 93px;
   right: 0px;
+}
+
+.phone-dialog{
+  width: 600px;
 }
