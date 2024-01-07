@@ -6,6 +6,6 @@ export interface IActionRequest {
 }
 
 export interface IActionResponse extends IActionRequest{
-    id:number;
-    data: Date;
+    id:number | string;
+    data: any;
 }

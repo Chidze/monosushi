@@ -7,7 +7,9 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 import { BasketDialogComponent } from '../basket-dialog/basket-dialog.component';
 import { PhoneDialogComponent } from '../phone-dialog/phone-dialog.component';
-import { SharedModule} from '../../shared/shared.module';
+import { ICategoryResponse } from '../../shared/interfaces/category/category.interface';
+import { CategoryService } from '../../shared/services/category/category.service';
+
 
 @Component({
   selector: 'app-header',
@@ -15,27 +17,34 @@ import { SharedModule} from '../../shared/shared.module';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  public headerCategory: Array<ICategoryResponse> = [];
   public total = 0;
-  private basket: Array<IProductResponse> = [];
+  public basket: Array<IProductResponse> = [];
   public isLogin = false;
   public loginUrl = '';
   public loginPage = '';
 
 
   constructor(
+    private categoryService: CategoryService,
     private orderService: OrderService,
     private accountService: AccountService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
+    this.loadCategory();
     this.loadBasket();
     this.updateBasket();
     this.checkUserLogin();
     this.checkUpdateUserLogin();
   }
 
+  loadCategory(): void {
+    this.categoryService.getAllFirebase().subscribe((data) => {
+      this.headerCategory = data as ICategoryResponse[];
+    });
+  }
   loadBasket(): void {
     if (localStorage.length > 0 && localStorage.getItem('basket')) {
       this.basket = JSON.parse(localStorage.getItem('basket') as string);

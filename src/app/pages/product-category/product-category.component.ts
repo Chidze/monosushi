@@ -14,10 +14,10 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
 
   public userProducts: Array<IProductResponse> = [];
   private eventSubscription!: Subscription;
- 
+  public currentCategoryName!: string;
 
   constructor(
-    private productService: ProductService,
+    public productService: ProductService,
     private orderService: OrderService,
     private activatedRoute: ActivatedRoute,
     private router: Router
@@ -30,13 +30,18 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {}
- 
+
 
   loadProduct(): void {
     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    this.productService.getAllByCategory(categoryName).subscribe((data) => {
-        this.userProducts = data;
-    });
+    // this.productService.getAllByCategory(categoryName).subscribe((data) => {
+    //     this.userProducts = data;
+    // });
+    this.productService.getAllByCategoryFirebase(categoryName).then(data => {
+      this.userProducts = data as IProductResponse[];
+      this.currentCategoryName = this.userProducts[0].category.name;
+    })
+    console.log(this.userProducts[0].category.path, this.userProducts[0].id)
   }
   ngOnDestroy(): void {
     this.eventSubscription.unsubscribe();
@@ -66,5 +71,8 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     localStorage.setItem('basket', JSON.stringify(basket));
     product.count = 1;
     this.orderService.changeBasket.next(true);
+  }
+  path(): void{
+
   }
 }

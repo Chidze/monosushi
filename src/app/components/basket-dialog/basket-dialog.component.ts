@@ -5,7 +5,6 @@ import { IProductResponse } from '../../shared/interfaces/product/product.interf
 import { OrderService } from '../../shared/order/order.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
-import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 
 
 

@@ -4,6 +4,7 @@ import { IActionResponse } from 'src/app/shared/interfaces/action/action.interfa
 import { ActionService } from 'src/app/shared/services/action/action.service';
 import { ImageService } from 'src/app/shared/services/image/image.service';
 import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -19,7 +20,7 @@ export class AdminActionsComponent implements OnInit{
   public editStatus = false;
   public show = true;
   public adminActions !: IActionResponse[];
-  public currentID!:number;
+  public currentID!:number | string;
   public isUploaded = false;
   public uploadPercent!: number;
 
@@ -27,7 +28,8 @@ constructor(
   private fb: FormBuilder,
   private actionService : ActionService,
   private storage: Storage,
-  private imageService: ImageService
+  private imageService: ImageService,
+  private toastr: ToastrService
   ){
 
 }
@@ -39,25 +41,37 @@ ngOnInit(): void {
 
 initActionForm():void {
   this.actionsForm = this.fb.group ({
-    data: [new Date()],
+    data: [ new Date() ],
     name: [null, Validators.required],
     title: [null, Validators.required],
     description: [null, Validators.required],
-    image: ['gs://actions-162bb.appspot.com/images', Validators.required]
+    image: [null, Validators.required]
   })
+
 }
 
 loadActions():void{
-  this.actionService.getAll().subscribe((data) => {this.adminActions = data})
+  // this.actionService.getAll().subscribe((data) => {this.adminActions = data})
+  this.actionService.getAllFirebase().subscribe(data => {
+    this.adminActions = data as IActionResponse[];
+  })
 }
 
 addAction():void{
   if(this.editStatus){
-    this.actionService.update(this.actionsForm.value, this.currentID).subscribe(() => this.loadActions())
+    // this.actionService.update(this.actionsForm.value, this.currentID).subscribe(() => this.loadActions())
+
+    this.actionService.updateFirebase(this.actionsForm.value, this.currentID as string).then(() => {
+      this.loadActions();
+      this.toastr.success('Категорія успішно оновлена')})
   }
+
   else{
-    this.actionService.create(this.actionsForm.value).subscribe(()=>{this.loadActions()})
+    // this.actionService.create(this.actionsForm.value).subscribe(()=>{this.loadActions()})
+    this.actionService.createFirebase(this.actionsForm.value).then(() => {
+      this.toastr.success('Категорія успішно додана');})
   }
+
   this.actionsForm.reset();
   this.show = true;
   this.editStatus = false;
@@ -78,11 +92,15 @@ editAction(action: IActionResponse): void {
   this.currentID = action.id
   this.isUploaded = true;
   this.show= false;
-  
+
 }
 
 deleteAction(action: IActionResponse): void {
-  this.actionService.delete(action.id).subscribe(() => { this.loadActions() })
+  // this.actionService.delete(action.id).subscribe(() => { this.loadActions() })
+  this.actionService.deleteFirebase(action.id as string).then(() => {
+    this.loadActions();
+    this.toastr.success('Категорія успішно видалена');
+  })
 }
 
 upload(event: any): void {

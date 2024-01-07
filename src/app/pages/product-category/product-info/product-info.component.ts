@@ -10,24 +10,42 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
   styleUrls: ['./product-info.component.scss']
 })
 export class ProductInfoComponent implements OnInit{
-  public currentProduct! :IProductResponse;
-
+  public currentCategoryName!: string;
+  public currentProduct: IProductResponse = {
+    category:{
+      name: 'Loading..',
+      path: 'Loading..',
+      image: 'Loading..',
+      id: 'Loading..',
+    },
+    name: 'Loading..',
+    path: 'Loading..',
+    description: 'Loading..',
+    weight: 0,
+    price: 0,
+    image: 'Loading..',
+    count: 0,
+    id: 'Loading..',
+  }
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private orderService: OrderService){}
-    
+
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(response => {
-      this.currentProduct = response['productInfo'];
-    })
+    this.loadProduct()
   }
-  
+
   loadProduct(): void {
-    const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.productService.getOne(id).subscribe(data => {
-      this.currentProduct = data;
-    })
+    // this.productService.getOne(id).subscribe(data => {
+    //   this.currentProduct = data;
+    // })
+    const product_ID = this.activatedRoute.snapshot.paramMap.get('id');
+    this.productService
+      .getOneFirebase(product_ID as string)
+      .subscribe((data) => {
+        this.currentProduct = data as IProductResponse;
+      });
   }
 
 

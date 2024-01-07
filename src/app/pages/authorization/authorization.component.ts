@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, TitleStrategy } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -54,14 +54,14 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
       });
   }
   async login(email: string, password: string): Promise<void> {
-    
+
     const credential = await signInWithEmailAndPassword(this.auth, email, password);
     this.loginSubcription = docData(doc(this.afs, 'users', credential.user.uid)).subscribe(
       (user) => {
         console.log(user);
         const currentUser = { ...user, uid: credential.user.uid };
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        
+
         if (user && user['role'] === ROLE.ADMIN) {
           this.router.navigate(['/admin']);
         }

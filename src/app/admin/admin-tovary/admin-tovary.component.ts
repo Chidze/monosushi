@@ -13,11 +13,11 @@ import { CategoryService } from 'src/app/shared/services/category/category.servi
   styleUrls: ['./admin-tovary.component.scss']
 })
 export class AdminTovaryComponent implements OnInit{
-  public adminCategories: Array<ICategoryResponse> = []; 
+  public adminCategories: Array<ICategoryResponse> = [];
   public adminProducts!: IProductResponse[];
   public productForm !: FormGroup;
   public editStatus = false;
-  public currentTovarID!: number;
+  public currentTovarID!: number | string;
   public currentCategoryID!: number;
   public isUploaded = false;
   public uploadPercent!: number;
@@ -35,13 +35,13 @@ export class AdminTovaryComponent implements OnInit{
     this.initProductForm();
     this.loadCategories();
     this.loadProducts();
-  
+
   }
-  
+
   initProductForm():void {
     this.productForm = this.fb.group ({
-      name: [null, Validators.required],
       category: [null, Validators.required],
+      name: [null, Validators.required],
       path:  [null, Validators.required],
       description: [null, Validators.required],
       weight: [null, Validators.required],
@@ -49,61 +49,85 @@ export class AdminTovaryComponent implements OnInit{
       image: [null, Validators.required],
       count: [1],
     })
+
   }
 
   loadCategories(): void {
-    this.categoryService.getAll().subscribe((data) => {
-      this.adminCategories = data;
+    // this.categoryService.getAll().subscribe((data) => {
+    //   this.adminCategories = data;
+    //   this.productForm.patchValue({
+    //     category: this.adminCategories[0].id,
+    //   });
+    // });
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.adminCategories = data as ICategoryResponse[];
       this.productForm.patchValue({
-        category: this.adminCategories[0].id,
-      });
-    });
+            category: this.adminCategories[0].id,
+          });
+          })
   }
 
-  
+
   loadProducts():void{
-    this.productService.getAll().subscribe((data) => {this.adminProducts = data})
+    // this.productService.getAll().subscribe((data) => {this.adminProducts = data})
+    this.productService.getAllFirebase().subscribe(data => {
+      this.adminProducts = data as IProductResponse[];
+      console.log(
+        this.adminProducts
+      )
+    })
+
   }
-  
+
   addProduct():void{
     if(this.editStatus){
-      this.productService.update(this.productForm.value, this.currentTovarID).subscribe(() => 
-      {this.loadProducts();
-      this.toastr.info('Продукт успішно редаговано')})
+      // this.productService.update(this.productForm.value, this.currentTovarID).subscribe(() =>
+      this.productService.updateFirebase(this.productForm.value, this.currentTovarID as string).then(() => {
+      this.loadProducts();
+      this.toastr.info('Продукт успішно редаговано')
+      })
+      console.log(this.currentTovarID)
     }
     else{
-      this.productService.create(this.productForm.value).subscribe(()=>{this.loadProducts();
-        this.toastr.info('Продукт успішно додано')})
+      // this.productService.create(this.productForm.value).subscribe(()=>{this.loadProducts();
+      this.productService.createFirebase(this.productForm.value).then(() => {
+        this.loadProducts();
+        this.toastr.info('Продукт успішно додано')
+      })
+      console.log(this.productForm.value)
     }
     this.productForm.reset();
     this.show = true;
     this.editStatus = false;
     this.uploadPercent = 0;
     this.isUploaded = false;
-    
   }
-  
+
   editProduct(product: IProductResponse): void {
-    this.productForm.patchValue({ 
-      id: product.id,
+    this.productForm.patchValue({
       category: product.category,
       name: product.name,
       path:  product.path,
       description: product.description,
       weight: product.weight,
       price: product.price,
-      image: product.image
+      image: product.image,
+      count: [1],
     })
     this.editStatus = true;
     this.currentTovarID = product.id;
     this.show= false;
     this.isUploaded = true;
   }
-  
+
   deleteProduct(product: IProductResponse): void {
-    this.productService.delete(product.id).subscribe(() => { this.loadProducts() })
+    // this.productService.delete(product.id).subscribe(() => { this.loadProducts() })
+    this.productService.deleteFirebase(product.id as string).then(() => {
+      this.loadProducts();
+      this.toastr.success('Категорія успішно видалена');
+    })
   }
-  
+
   upload(event: any): void {
     const file = event.target.files[0];
     this.imageService.uploadFile('images', file.name, file)
@@ -117,7 +141,7 @@ export class AdminTovaryComponent implements OnInit{
         console.log(err);
       })
   }
-  
+
   deleteImage(): void {
     this.imageService.deleteUploadFile(this.valueByControl('image'))
     .then(() => {
@@ -132,7 +156,7 @@ export class AdminTovaryComponent implements OnInit{
   valueByControl(control: string): string {
     return this.productForm.get(control)?.value;
   }
-  
+
   add() {
     this.show = false;
     this.editStatus = false;
@@ -141,5 +165,5 @@ export class AdminTovaryComponent implements OnInit{
     this.show = true;
     this.editStatus = false;
   }
-  
+
 }

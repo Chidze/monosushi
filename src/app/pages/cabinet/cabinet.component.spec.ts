@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CabinetComponent } from './cabinet.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CabinetComponent', () => {
   let component: CabinetComponent;
@@ -8,7 +9,10 @@ describe('CabinetComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CabinetComponent]
+      declarations: [CabinetComponent],
+      imports: [
+        HttpClientTestingModule
+      ]
     });
     fixture = TestBed.createComponent(CabinetComponent);
     component = fixture.componentInstance;
@@ -17,5 +21,12 @@ describe('CabinetComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should delete data of user from memory', () => {
+    localStorage.setItem('currentUser', JSON.stringify('testData'));
+    component.logOut();
+    const userData = localStorage.getItem('currentUser');
+    expect(userData).toBe(null);
   });
 });

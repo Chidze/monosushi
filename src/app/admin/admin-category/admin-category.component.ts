@@ -4,6 +4,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ImageService } from 'src/app/shared/services/image/image.service';
 import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-category',
@@ -15,7 +16,7 @@ export class AdminCategoryComponent implements OnInit{
   public adminCategories!: ICategoryResponse[];
   public categoriesForm !: FormGroup;
   public editStatus = false;
-  public currentID!:number;
+  public currentID!:number | string;
   public isUploaded = false;
   public uploadPercent!: number;
   public show = true;
@@ -25,7 +26,8 @@ constructor(
   private fb: FormBuilder,
   private categoryService: CategoryService,
   private storage: Storage,
-  private imageService: ImageService
+  private imageService: ImageService,
+  private toastr: ToastrService
   ){
 
 }
@@ -39,20 +41,31 @@ initCategoryForm():void {
   this.categoriesForm = this.fb.group ({
     name: [null, Validators.required],
     path: [null, Validators.required],
-    image: ['gs://actions-162bb.appspot.com/images', Validators.required]
+    image: [null, Validators.required]
   })
 }
 
 loadCategories():void{
-  this.categoryService.getAll().subscribe((data) => {this.adminCategories = data})
+  // this.categoryService.getAll().subscribe((data) => {this.adminCategories = data})
+  this.categoryService.getAllFirebase().subscribe(data => {
+    this.adminCategories = data as ICategoryResponse[];
+  })
 }
 
 addCategory():void{
   if(this.editStatus){
-    this.categoryService.update(this.categoriesForm.value, this.currentID).subscribe(() => this.loadCategories())
+    // this.categoryService.update(this.categoriesForm.value, this.currentID).subscribe(() => this.loadCategories())
+    this.categoryService.updateFirebase(this.categoriesForm.value, this.currentID as string).then(() => {
+      this.loadCategories();
+      this.toastr.success('Категорія успішно оновлена')
+  })
   }
   else{
-    this.categoryService.create(this.categoriesForm.value).subscribe(()=>{this.loadCategories()})
+      this.categoryService.createFirebase(this.categoriesForm.value).then(() => {
+        this.toastr.success('Категорія успішно додана');
+      })
+
+    // this.categoryService.create(this.categoriesForm.value).subscribe(()=>{this.loadCategories()})
   }
   this.categoriesForm.reset();
   this.show = true;
@@ -63,20 +76,27 @@ addCategory():void{
 }
 
 editCategory(category: ICategoryResponse): void {
-  this.categoriesForm.patchValue({ 
-    id: category.id,
+  this.editStatus = true;
+this.categoriesForm.patchValue({
     name: category.name,
     path: category.path,
-    image: category.image,
-  })
+    image: category.image
+  });
   this.editStatus = true;
-  this.currentID = category.id;
-  this.show= false;
+  this.currentID = category.id as number;
   this.isUploaded = true;
+  this.isUploaded = true;
+  this.editStatus = true;
+  this.show = false;
+
 }
 
 deleteCategory(category: ICategoryResponse): void {
-  this.categoryService.delete(category.id).subscribe(() => { this.loadCategories() })
+  // this.categoryService.delete(category.id).subscribe(() => { this.loadCategories() })
+  this.categoryService.deleteFirebase(category.id as string).then(() => {
+    this.loadCategories();
+    this.toastr.success('Категорія успішно видалена');
+  })
 }
 
 upload(event: any): void {

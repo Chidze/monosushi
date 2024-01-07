@@ -37,6 +37,7 @@ export class AuthDialogComponent  implements OnInit {
   public isLogin = false;
   public checkPassword = false;
   private registerData!: IRegister;
+  public match = false;
 
   constructor(
     private fb: FormBuilder,
@@ -145,6 +146,10 @@ export class AuthDialogComponent  implements OnInit {
       this.registerForm.controls['password2'].setErrors({
         matchError: 'Паролі не співпадають'
       })
+      this.match = true;
+    }
+    else{
+      this.match = false;
     }
   }
 

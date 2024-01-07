@@ -1,8 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { IActionResponse, IActionRequest } from '../shared/interfaces/action/action.interface';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { ActionService } from 'src/app/shared/services/action/action.service';
-import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../shared/services/account/account.service';
 

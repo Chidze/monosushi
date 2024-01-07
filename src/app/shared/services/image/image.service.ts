@@ -35,6 +35,8 @@ export class ImageService {
         });
         await task;
         url = await getDownloadURL(storageRef);
+        console.log(storageRef);
+        console.log(url)
       } catch (e: any) {
         console.error(e);
       }
