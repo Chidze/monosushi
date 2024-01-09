@@ -1,4 +1,4 @@
- <div class="box">
+ <div class="box" *ngIf="currentProduct">
         <img class="image"  [src]="currentProduct.image" alt="currentProduct.name">
         <div class="text">
         <div class="name">{{ currentProduct.name }}</div>

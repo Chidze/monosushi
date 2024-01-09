@@ -20,7 +20,7 @@ ngOnInit(): void {
 }
 
 loadActions():void{
-    this.actionService.getAll().subscribe((data) => {this.userActions = data});
+    this.actionService.getAllFirebase().subscribe((data) => {this.userActions = data as IActionResponse[]});
 }
 
 

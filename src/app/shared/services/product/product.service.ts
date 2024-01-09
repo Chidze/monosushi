@@ -59,17 +59,10 @@ delete(id:number): Observable<void> {
   //   const productsQuery= query(this.productCollection, where('category.path', '==', name));
   //   return collectionData(productsQuery, {idField: 'name'})
   // }
-  async getAllByCategoryFirebase(name: string) {
-    const arr: DocumentData[] = [];
-    const category = query(
-      collection(this.afs, 'products'),
-      where('category.path', '==', `${name}`)
-    );
-    const querySnapshot = await getDocs(category);
-    querySnapshot.forEach((doc) => {
-      arr.push({ ...doc.data(), id: doc.id });
-    });
-    return arr;
+  getAllByCategoryFirebase(name: string): Observable<DocumentData[]> {
+    const productCollectionById = query(collection(this.afs, 'products'), where('category.path', '==', name));
+    // return this.http.get<IProductResponse[]>(`${this.api.products}?category.path=${name}`);
+    return collectionData(productCollectionById, { idField: 'id' });
   }
 
   getOneFirebase(id: string) {

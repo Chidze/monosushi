@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
-import { OrderService } from 'src/app/shared/order/order.service';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
@@ -11,22 +11,8 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 })
 export class ProductInfoComponent implements OnInit{
   public currentCategoryName!: string;
-  public currentProduct: IProductResponse = {
-    category:{
-      name: 'Loading..',
-      path: 'Loading..',
-      image: 'Loading..',
-      id: 'Loading..',
-    },
-    name: 'Loading..',
-    path: 'Loading..',
-    description: 'Loading..',
-    weight: 0,
-    price: 0,
-    image: 'Loading..',
-    count: 0,
-    id: 'Loading..',
-  }
+  public currentProduct!: IProductResponse;
+
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,

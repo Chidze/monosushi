@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 
+
 const routes: Routes = [
-  {path: '', redirectTo: 'app', pathMatch: 'full'},
   {
     path: '',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
@@ -40,7 +40,8 @@ const routes: Routes = [
     path: 'admin',
     canActivate: [AuthGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
-  }
+  },
+
 ];
 
 @NgModule({

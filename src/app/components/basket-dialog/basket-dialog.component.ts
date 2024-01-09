@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { IProductResponse } from '../../shared/interfaces/product/product.interface';
-import { OrderService } from '../../shared/order/order.service';
+import { OrderService } from '../../shared/services/order/order.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
+import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 
 
 
@@ -81,6 +82,5 @@ export class BasketDialogComponent {
       this.orderService.changeBasket.next(true);
     }
   }
-
 
 }

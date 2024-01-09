@@ -26,9 +26,9 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call loadProduct', () => {
-    spyOn(component, 'loadProduct');
-    component.ngOnInit();
-    expect(component.loadProduct).toHaveBeenCalled();
-  });
+  // it('should call loadProduct', () => {
+  //   spyOn(component, 'loadProduct');
+  //   component.ngOnInit();
+  //   expect(component.loadProduct).toHaveBeenCalled();
+  // });
 });

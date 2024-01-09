@@ -9,7 +9,7 @@ import { ActionService } from 'src/app/shared/services/action/action.service';
   styleUrls: ['./actions-info.component.scss']
 })
 export class ActionsInfoComponent implements OnInit{
-  
+
   public currentAction!: IActionResponse;
 
   constructor(
@@ -23,9 +23,9 @@ export class ActionsInfoComponent implements OnInit{
 
 
   getOneAction(): void {
-    const ACTION_ID = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.actionService.getOne(ACTION_ID).subscribe(data => {
-      this.currentAction = data;
+    const ACTION_ID = this.activatedRoute.snapshot.paramMap.get('id');
+    this.actionService.getOneFirebase(ACTION_ID as string).subscribe(data => {
+      this.currentAction = data as IActionResponse;
     })
   }
 }

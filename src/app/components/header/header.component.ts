@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ROLE } from 'src/app/shared/constants/role.constant';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
-import { OrderService } from 'src/app/shared/order/order.service';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 import { BasketDialogComponent } from '../basket-dialog/basket-dialog.component';
@@ -23,7 +23,8 @@ export class HeaderComponent implements OnInit {
   public isLogin = false;
   public loginUrl = '';
   public loginPage = '';
-
+  public admin = false;
+  public user = false;
 
   constructor(
     private categoryService: CategoryService,
@@ -71,14 +72,18 @@ export class HeaderComponent implements OnInit {
       this.isLogin = true;
       this.loginUrl = 'admin';
       this.loginPage = 'Admin';
+      this.admin = true;
     } else if (currentUser && currentUser.role === ROLE.USER) {
       this.isLogin = true;
+      this.user = true;
       this.loginUrl = 'cabinet';
       this.loginPage = 'Cabinet';
     } else {
       this.isLogin = false;
       this.loginUrl = '';
       this.loginPage = '';
+      this.user = false;
+      this.admin = false;
     }
   }
 

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DiscountsComponent } from './discounts.component';
-import { AboutRoutingModule } from '../about/about-routing.module';
 import { SharedModule } from '../../shared/shared.module';
+import { DiscountsRoutingModule } from "./discounts-routing.module";
 
 
 
@@ -12,8 +12,8 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   imports: [
     CommonModule,
-    AboutRoutingModule,
-    SharedModule
+    SharedModule,
+    DiscountsRoutingModule
   ]
 })
 export class DiscountsModule { }

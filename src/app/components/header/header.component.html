@@ -9,12 +9,10 @@
                 <a class="nav-link active"  [routerLink]="[ 'actions']">
                     <img class="nav-img" src="../../../assets/nav-img-gift.svg" alt="">Акції</a>
             </li>
-
-<!--              <div  *ngFor="let category of headerCategory">-->
-<!--                <li class="nav-item">-->
-<!--                <a class="nav-link active"  [routerLink]="[ '/product/'+ category.path ]" >-->
-<!--                    <img class="nav-img" [src]="category.image" alt="">{{category.name}}</a>-->
-<!--            </li>-->
+            <li class="nav-item">
+                <a class="nav-link active"  [routerLink]="[ '/product-category/rolls']" >
+                    <img class="nav-img" src="../../../assets/nav-img-rolls.svg" alt="">Роли</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link active" [routerLink]="[ '/product-category/sets']">
                     <img class="nav-img" src="../../../assets/nav-img-sets.svg" alt="">Сети</a>
@@ -27,7 +25,6 @@
                 <a class="nav-link active" [routerLink]="[ '/product-category/souse']">
                     <img class="nav-img" src="../../../assets/icon.svg" alt="">Соуси</a>
             </li>
-<!--    </div>-->
             <li class="nav-item dropdown">
                 <div class="dropdown">
                 <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -56,9 +53,12 @@
             </li>
             <li>
 
-                <div class="login"  *ngIf="isLogin" [routerLink]="[ 'discounts']" >
-                    <p>{{ loginPage}}</p>
+                <div class="login"  *ngIf="isLogin && user">
+                    <p [routerLink]="[ '/cabinet']">{{ loginPage}}</p>
                 </div>
+              <div class="login"  *ngIf="isLogin && admin">
+                <p [routerLink]="[ '/admin']">{{ loginPage}}</p>
+              </div>
                 <div class="unlogin" *ngIf="!isLogin">
                     <img class="user-img" src="../../../assets/user.svg" (click)="openLoginDialog()" >
                 </div>

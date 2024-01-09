@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
-import { OrderService } from 'src/app/shared/order/order.service';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
@@ -15,6 +15,8 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   public userProducts: Array<IProductResponse> = [];
   private eventSubscription!: Subscription;
   public currentCategoryName!: string;
+  public nameOfPage = '';
+
 
   constructor(
     public productService: ProductService,
@@ -29,19 +31,19 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
 
   loadProduct(): void {
-    const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
+    let categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
     // this.productService.getAllByCategory(categoryName).subscribe((data) => {
     //     this.userProducts = data;
     // });
-    this.productService.getAllByCategoryFirebase(categoryName).then(data => {
+    this.productService.getAllByCategoryFirebase(categoryName).subscribe(data => {
       this.userProducts = data as IProductResponse[];
-      this.currentCategoryName = this.userProducts[0].category.name;
+      this.nameOfPage = this.userProducts[0].category.name;
     })
-    console.log(this.userProducts[0].category.path, this.userProducts[0].id)
   }
   ngOnDestroy(): void {
     this.eventSubscription.unsubscribe();
